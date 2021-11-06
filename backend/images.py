@@ -1,6 +1,7 @@
 from serpapi import GoogleSearch
 from config import serp_key
 
+
 def get_images(keyword):
     '''
     Scrapes the top 3 images for this keyword
