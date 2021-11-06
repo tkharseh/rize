@@ -1,4 +1,5 @@
 from fastapi import FastAPI, UploadFile, File
+from summary import Summary
 
 app = FastAPI()
 
@@ -10,7 +11,13 @@ async def home():
 
 
 @app.post("/upload")
-async def create_upload_text(file: UploadFile = File(...)):
-    return {"filename": file.filename}
+async def create_upload_text(uploadfile: UploadFile = File(...)):
+    # read file contents
+    contents = await uploadfile.read()
+    uploadfile.close()
+
+    s = Summary(contents.decode())
+
+    return "done"
 
 

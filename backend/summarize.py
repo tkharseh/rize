@@ -1,3 +1,4 @@
+
 from transformers import pipeline
 
 
@@ -5,12 +6,14 @@ def get_summary(input_text):
     summarizer = pipeline('summarization')
 
     max_chunk = 500
+    # input_str = input_text.decode()
 
     input_text = input_text.replace('.', '.<eos>')
     input_text = input_text.replace('?', '?<eos>')
     input_text = input_text.replace('!', '!<eos>')
 
     sentences = input_text.split('<eos>')
+
     current_chunk = 0
     chunks = []
     for sentence in sentences:
@@ -38,4 +41,4 @@ def get_summary(input_text):
     return result[:-2]
 
 
-print(get_summary('Hello. How are you? Im fine thanks for asking.'))
+# print(get_summary('Hello. How are you? Im fine thanks for asking.'))
