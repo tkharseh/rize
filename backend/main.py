@@ -13,3 +13,4 @@ async def home():
 async def create_upload_text(file: UploadFile = File(...)):
     return {"filename": file.filename}
 
+
