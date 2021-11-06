@@ -5,6 +5,7 @@ from ibm_watson.natural_language_understanding_v1 import Features, ConceptsOptio
 from config import watson_key, watson_url
 import wikipedia
 
+
 def get_keyconcepts(input_text):
     authenticator = IAMAuthenticator(watson_key)
     natural_language_understanding = NaturalLanguageUnderstandingV1(
@@ -24,3 +25,5 @@ def get_keyconcepts(input_text):
         keyconcepts[keyconcept] = wikipedia.summary(keyconcept, sentences=1)
 
     return keyconcepts
+
+print()

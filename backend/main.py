@@ -18,6 +18,6 @@ async def create_upload_text(uploadfile: UploadFile = File(...)):
 
     s = Summary(contents.decode())
 
-    return "done"
+    return s
 
 
