@@ -3,8 +3,9 @@ import axios from 'axios';
 
 class UploadComponent extends Component{
     state = {
-        file: '',
-        summary: ''
+        file: null,
+        summary: null,
+        isSummaryDone: false,
     };
 
     onFileChange = event => {
@@ -20,21 +21,49 @@ class UploadComponent extends Component{
             this.state.file.name
         );
 
-        console.log(this.state.file)
+        console.log('before')
 
-        const url = "http://localhost:8000/upload";
-        // has a .then() but figure out how to add that LATER
-        axios
-            .post(url, formData)
-            .then(res => this.setState({summary: res.data}));
+        // async function awaitPOST() {
+        //         const url = "http://localhost:8000/upload";
+        //         const response = await axios.post(url, formData);
+        //         console.log(typeof response)
+        //         this.setState({summary: response.data});
+        //         // console.log(response.data);
+        //         // return response
+        //     }
+        //
+        // awaitPOST();
+        // this.setState({summary: awaitPOST().data});
 
-        console.log('finished summary')
+        // console.log(this.setState.summary)
+        // const url = "http://localhost:8000/upload";
+        // axios
+        //     .post(url, formData)
+        //     .then(res => this.setState({summary: res.data}));
 
-    }
 
-    render(){
+
+        async function awaitPOST() {
+            const url = "http://localhost:8000/upload";
+            const response = await axios.post(url, formData);
+            console.log(response.data)
+            return response;
+        }
+
+        this.setState({summary : awaitPOST().data})
+
+
+        }
+
+
+    render() {
+        // const { file, summary, isSummaryDone } = this.state;
         return (
-            <div>
+            // {
+            //     isSummaryDone ?
+            //         <Summarize summary={this.state.summary}/>:
+
+            <div className="upload-text-button">
                 <input type="file" onChange={this.onFileChange}/>
                 {/*<div className="upload-text-button">*/}
                 {/*<label for="file" className="upload-text-button">Upload text file</label>*/}
@@ -43,7 +72,11 @@ class UploadComponent extends Component{
                 <button onClick={this.onFileUpload}>
                     Upload
                 </button>
+
             </div>
+
+            // }
+
         );
     }
 }

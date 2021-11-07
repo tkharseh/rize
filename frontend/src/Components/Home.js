@@ -1,17 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import UploadTextComponent from './UploadTextComponent';
 import UploadComponent from "./UploadComponent";
+import DownloadComponent from "./DownloadComponent";
 import Summarize from "./Summarize";
 
 
 
 
 class Home extends React.Component {
-    constructor() {
-         super();
+    constructor(props) {
+         super(props);
          this.state = {
             uploadComponent: true,
-            summarize: false
+            summarize: false,
+            summary: ''
          }
     }
 

@@ -10,7 +10,12 @@ class Summary:
         self.summary = summarize.get_summary(self.input)
         self.concepts = key_concepts.get_keyconcepts(self.input)
         self.images = []
-
-    def get_images(self):
         for key in self.concepts.keys():
             self.images.append(images.get_images(key))
+
+    def json_format(self):
+        return {
+            'summary': self.summary,
+            'concepts': self.concepts,
+            'images': self.images
+        }

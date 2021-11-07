@@ -96,6 +96,14 @@
   position: absolute;
   top: 505px;
   left: 1113px;
+  font-family:sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: white;
+  background-color:#151865;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 7px 20px 7px 20px;
 }
 
 .Button {
