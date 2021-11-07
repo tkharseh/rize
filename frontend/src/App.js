@@ -3,8 +3,10 @@ import Home from "./Components/Home";
 import Summarize from "./Components/Summarize";
 
 import './App.css'
+import DownloadComponent from "./Components/DownloadComponent";
 
 function App() {
+
     return (
       <Router>
         <Routes>
@@ -12,6 +14,7 @@ function App() {
           <Route path='/summarize' element={<Summarize/>} />
         </Routes>
       </Router>
+
     )
 }
 
