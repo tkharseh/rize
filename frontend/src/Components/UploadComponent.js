@@ -28,6 +28,8 @@ class UploadComponent extends Component{
             .post(url, formData)
             .then(res => this.setState({summary: res.data}));
 
+        console.log('finished summary')
+
     }
 
     render(){
