@@ -40,7 +40,7 @@ class UploadTextComponent extends Component{
         this.setState({ selectedFile: event.target.files[0] });
           };
 
-      onFileUpload = async (selectedFile) => {
+    onFileUpload = async (selectedFile) => {
           const formData = new FormData();
 
           formData.append(

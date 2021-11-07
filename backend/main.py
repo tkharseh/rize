@@ -1,7 +1,19 @@
 from fastapi import FastAPI, UploadFile, File
 from summary import Summary
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/home")
@@ -14,10 +26,11 @@ async def home():
 async def create_upload_text(uploadfile: UploadFile = File(...)):
     # read file contents
     contents = await uploadfile.read()
-    uploadfile.close()
+    await uploadfile.close()
 
     s = Summary(contents.decode())
 
+    # print(s.summary)
     return s
 
 

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import UploadTextComponent from './UploadTextComponent';
+import UploadComponent from "./UploadComponent";
 
 function Home() {
     return (
@@ -9,7 +10,8 @@ function Home() {
           <img className="illustration" alt="illustration" src="Images/illustration.png" height="551" width="606"/>
           <img className="upload-text" alt="upload-text" src="Images/upload-text.png" height="275" width="275"/>
         </div>
-        <UploadTextComponent ></UploadTextComponent>
+          <UploadComponent ></UploadComponent>
+        {/*<UploadTextComponent ></UploadTextComponent>*/}
       </div>
     )
 }
