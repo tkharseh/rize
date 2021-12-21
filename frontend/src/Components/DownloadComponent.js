@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {Button} from "react-native-web";
 import {jsPDF} from 'jspdf';
-import { useReactToPrint } from "react-to-print";
 
 class DownloadComponent extends Component {
     constructor(props) {

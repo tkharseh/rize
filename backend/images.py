@@ -17,6 +17,5 @@ def get_images(keyword):
     search = GoogleSearch(params)
     results = search.get_dict()
     images_results = results['images_results']
-    top_three_links = [images_results[0]['thumbnail'], images_results[1]['thumbnail'], images_results[2]['thumbnail']]
 
-    return top_three_links
+    return images_results[0]['thumbnail']

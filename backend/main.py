@@ -32,7 +32,7 @@ async def home():
     return "welcome to rize!"
 
 
-@app.post("/upload") #, response_model=SummaryModel)
+@app.post("/upload")
 async def upload(uploadfile: UploadFile = File(...)):
     contents = await uploadfile.read()
     await uploadfile.close()
@@ -42,20 +42,7 @@ async def upload(uploadfile: UploadFile = File(...)):
     json = JSONResponse(content=json_format)
     return json
 
-# @app.get("/get_summary")
-# async def get
 
-
-
-# @app.post("/upload")
-# async def create_upload_text(uploadfile: UploadFile = File(...)):
-#     # read file contents
-#     contents = await uploadfile.read()
-#     await uploadfile.close()
-#
-#     s = Summary(contents.decode())
-#     # json_compatible_sum = jsonable_encoder(s)
-#     # return JSONResponse(content=json_compatible_sum)
-#     # print(s.summary)
-#     # return Response(content=s, media_type="application/json")
-#     return
+@app.get("/summary")
+async def summary():
+    return "summary generated"
