@@ -9,10 +9,7 @@ class UploadComponent extends Component{
         file: null,
         summary: 'undefined',
         isSummaryDone: false,
-        // summaryComponent: null,
     };
-        // NEED TO UNMOUNT THIS AFTER AWAITPOST IS DONE
-        // this.awaitPOST = this.awaitPOST.bind(this)
     }
 
 
@@ -24,24 +21,8 @@ class UploadComponent extends Component{
         const url = "http://localhost:8000/upload";
         console.log('before await')
         const response = await axios.post(url, formData);
-        // console.log('before boolean')
-        // this.setState({summary : response.data})
-        // console.log(this.state.summary);
-        //
-        // const s = <Summarize summary={this.state.summary}/>
-        //
-        // console.log(typeof s)
-        //
-        // console.log(typeof s.state)
-        //
-        //
-        // this.setState({isSummaryDone : true})
-
-
         return response;
     }
-
-
 
     onFileUpload = () => {
         const formData = new FormData();
@@ -56,25 +37,6 @@ class UploadComponent extends Component{
             .then(r => this.setState({summary: r.data}))
             .then(r => console.log(this.state.summary))
             .then(r => this.setState({isSummaryDone : true}));
-
-
-
-
-        // debugger;
-
-        // return <Summarize summary={this.state.summary}/>;
-
-        // let dummy = null;
-        // while (!typeof dummy === axios.AxiosResponse){
-        //     dummy = this.awaitPOST(formData);
-        // }
-
-        // this.setState({summary : this.awaitPOST(formData).data});
-
-        // this.setState({isSummaryDone : true})
-
-        // componentWillUnmount here?
-
         }
 
 
@@ -84,38 +46,25 @@ class UploadComponent extends Component{
         if (this.state.summary === 'undefined') {
             display =
                 <div>
-                <img className="illustration" alt="illustration" src="Images/illustration.png" height="551" width="606"/>
-                    <img className="upload-text" alt="upload-text" src="Images/upload-text.png" height="275" width="275"/>
-                <div className="upload-text-button">
-                <input type="file" onChange={this.onFileChange}/>
-                <button onClick={this.onFileUpload}>
-                    Upload
-                </button>
-                </div></div>;
+                    <img style={{paddingLeft: 50}} className="illustration" alt="illustration" src="Images/illustration.png" height="551" width="606"/>
+                    {/* <h1 style={{color: '#151865', paddingLeft: 1450, paddingTop: 300}}> or </h1> */}
+                    <div style={{paddingLeft: 1250, paddingTop: 600 }}>
+                        <button style={{fontSize: 32, fontFamily: 'sans-serif', fontWeight: 'bold', borderRadius: 25, paddingTop: 15, paddingBottom:15, paddingRight: 105, paddingLeft: 105, backgroundColor: '#151865', color: 'white'}} width='25px' onClick={this.onFileUpload}> Upload! </button>
+                    </div>
+                    <h1 style={{color: '#151865', paddingLeft: 80, paddingRight: 1000}}> Spend less time stressing and more time learning! </h1>
+                    <p style={{color: '#151865', paddingLeft: 80, paddingRight: 1100}}> Upload any text file on the right and Rize will provide you with a summary, main concepts and related images of your content.</p>
+                    {/* <img style={{paddingLeft: 500}} className="upload-text" alt="upload-text" src="Images/upload-text.png" height="275" width="275"/> */}
+                    <div style={{border: 'dashed', borderColor: '#151865', borderRadius: 25}} className="upload-text-button">
+                        <input style={{fontSize: 16, fontFamily: 'sans-serif', fontWeight: 'bold', paddingTop: 105, paddingBottom:105, paddingRight: 35, paddingLeft: 75, color: 'black'}} type="file" onChange={this.onFileChange}/>
+                    </div>
+                </div>;
 
         } else {
-            // display = <Summarize summary={this.state.summary}/>;
-            // axios.get("http://localhost:8000/summary")
-            //     .then(Summarize(this.state.summary))
             display = Summarize(this.state.summary)
         }
-
-
         return (
             <div>{display}</div>
-
-            // <div className="upload-text-button">
-            //     <input type="file" onChange={this.onFileChange}/>
-            //     <button onClick={this.onFileUpload}>
-            //         Upload
-            //     </button>
-            //
-            //     {/*{this.state.isSummaryDone && <Summarize summary={this.state.summary}/>}*/}
-            // </div>
-
         );
-
-        
     }
 }
 
