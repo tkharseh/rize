@@ -10,8 +10,8 @@ class UploadComponent extends Component{
         summary: 'undefined',
         isSummaryDone: false,
     };
-    }
 
+    }
 
     onFileChange = event => {
         this.setState({file : event.target.files[0]})
@@ -21,12 +21,13 @@ class UploadComponent extends Component{
         const url = "http://localhost:8000/upload";
         console.log('before await')
         const response = await axios.post(url, formData);
+
+        console.log(response.data)
         return response;
     }
 
     onFileUpload = () => {
         const formData = new FormData();
-        let summaryObj = null;
         formData.append(
             "uploadfile",
             this.state.file,
@@ -37,9 +38,8 @@ class UploadComponent extends Component{
             .then(r => this.setState({summary: r.data}))
             .then(r => console.log(this.state.summary))
             .then(r => this.setState({isSummaryDone : true}));
+
         }
-
-
 
     render() {
         let display;
@@ -62,9 +62,13 @@ class UploadComponent extends Component{
         } else {
             display = Summarize(this.state.summary)
         }
+
         return (
             <div>{display}</div>
+
         );
+
+        
     }
 }
 
