@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import UploadTextComponent from './UploadTextComponent';
 import UploadComponent from "./UploadComponent";
 import DownloadComponent from "./DownloadComponent";
 import Summarize from "./Summarize";
