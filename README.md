@@ -1,3 +1,6 @@
+# Demo
+https://youtu.be/fSzOAyJK6uk
+
 # Inspiration
 Ever since COVID-19 was declared a global pandemic back in March 2020, billions of people around the world were forced to work from home. Students were required to attend their classes online and it's safe to say that this has taken a toll on many students. To make online learning more efficient and productive, we came up with Rize, which provides summaries of lectures to students.
 
